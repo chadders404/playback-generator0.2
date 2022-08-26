@@ -26,16 +26,6 @@ const Photo = styled.ImageBackground`
   backgroundcolor: "#0000";
 `;
 
-const InstaHeart = styled.Image`
-  flex: 1;
-  width: 30%;
-  resize-mode: contain;
-  align-self: center;
-`;
-// shadow-offset: width 0, height 20
-// shadow-opacity: 0.35;
-// shadow-radius: 35
-
 const Likes = styled.Text`
   font-weight: bold;
   font-size: 16px;
@@ -58,7 +48,7 @@ const ID = styled.Text`
 const Caption = styled.Text`
   font-size: 16px;
   margin-left: 12px;
-  padding: 0px 0px 4px;
+  padding: 0px 0px 0px;
   align-self: center;
 `;
 
@@ -66,7 +56,7 @@ const Comment = styled.Text`
   font-size: 16px;
   color: grey;
   margin-left: 12px;
-  padding: 0px 0px 4px;
+  padding: 4px 0px 4px;
 `;
 
 const Date = styled.Text`
@@ -94,10 +84,11 @@ export default function PostCard(props) {
       (isFinished) => {
         if (isFinished) {
           scale.value = withDelay(500, withSpring(0));
+          //setIsLiked(true) in PostInteractionBar.js
         }
       }
     );
-    console.log("doubletap");
+    console.log("doubletap like");
   }, []);
   //---------------------------------------------------------------------------------------------------------------------------
   return (

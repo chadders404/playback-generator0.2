@@ -5,10 +5,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  withDelay,
-  withTiming,
 } from "react-native-reanimated";
-
 import styled from "styled-components/native";
 
 const PostInteractionIconContainer = styled.View`
@@ -37,9 +34,13 @@ const AnimatedImage = Animated.createAnimatedComponent(Image);
 
 export default function () {
   let [isLiked, setIsLiked] = useState(false);
-  let [InstaLikeIcon, setInstaLikeIcon] = useState(
+  //can this state be updated when Photo is doubletapped in PostCard?
+  let [instaLikeIcon, setInstaLikeIcon] = useState(
     require("../../assets/icons/black/insta-like.png")
   );
+  let instaComment = require("../../assets/icons/black/insta-comment.png");
+  let instaMessage = require("../../assets/icons/black/insta-message.png");
+  let instaSave = require("../../assets/icons/black/insta-save.png");
 
   const scale = useSharedValue(0);
 
@@ -48,7 +49,7 @@ export default function () {
   const rStyle = useAnimatedStyle(() => ({
     transform: [{ scale: Math.max(scale.value, 1) }],
   }));
-  const onLike = useCallback(() => {
+  const handleLike = useCallback(() => {
     if (isLiked === false) {
       console.log("liked");
       setIsLiked(true);
@@ -82,10 +83,14 @@ export default function () {
 
   return (
     <PostInteractionIconContainer>
-      <TapGestureHandler ref={likeRef} numberOfTaps={1} onActivated={onLike}>
+      <TapGestureHandler
+        ref={likeRef}
+        numberOfTaps={1}
+        onActivated={handleLike}
+      >
         <Animated.View>
           <AnimatedImage
-            source={InstaLikeIcon}
+            source={instaLikeIcon}
             style={[
               rStyle,
               { width: 34, height: 26, margin: 10, resizeMode: "contain" },
@@ -94,14 +99,10 @@ export default function () {
         </Animated.View>
       </TapGestureHandler>
 
-      <LeftIcons
-        source={require("../../assets/icons/black/insta-comment.png")}
-      />
+      <LeftIcons source={instaComment} />
 
-      <LeftIcons
-        source={require("../../assets/icons/black/insta-message.png")}
-      />
-      <RightIcons source={require("../../assets/icons/black/insta-save.png")} />
+      <LeftIcons source={instaMessage} />
+      <RightIcons source={instaSave} />
     </PostInteractionIconContainer>
   );
 }
