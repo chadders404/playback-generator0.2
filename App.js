@@ -11,11 +11,11 @@ import InstagramNewsfeedInput from "./src/screens/InstagramNewsfeedInput.js";
 
 export default function App() {
   let [renderNewsfeed, setRenderNewsfeed] = useState(true);
-  let name = "charlie_spr1";
-  let avatarimage = require("./assets/images/CharlieProfilePic.jpg");
-  let postphoto = require("./assets/images/1CharlieBonfireNight.jpg");
+  let name = "nick_nzzzz";
+  let avatarimage = require("./assets/images/NickProfilePic.jpg");
+  let postphoto = require("./assets/images/NickNellie.jpg");
   let caption = "Bonfire night✨";
-  let likecount = 26;
+  let likecount = 760;
   let date = "15 hours ago";
   let commentcount = 6;
 
@@ -26,7 +26,7 @@ export default function App() {
           <CustomStatusBar />
           <Header />
           <ScrollView>
-            <StoryBar />
+            <StoryBar avatarimage={avatarimage} />
             <Separator />
             <PostCard
               name={name}

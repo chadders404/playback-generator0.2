@@ -53,14 +53,12 @@ const AddStoryButton = styled.Text`
 `;
 //border-radius property acting weird on iOS. Temporary fix in place.
 
-export default function StoryBar() {
+export default function StoryBar(props) {
   return (
     <StoryBarRow>
       <StoryContainer>
         <StoryCircle>
-          <Avatar
-            source={require("../../assets/images/CharlieProfilePic.jpg")}
-          />
+          <Avatar source={props.avatarimage} />
         </StoryCircle>
         <AddStoryButton>+</AddStoryButton>
         <StoryID>Your story</StoryID>
